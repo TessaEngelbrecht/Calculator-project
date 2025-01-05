@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tessa Engelbrecht - CV</title>
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Custom Properties */
+        :root {
+            /* Colors */
+            --color-primary: #2c3e50;
+            --color-secondary: #3498db;
+            --color-accent: #e74c3c;
+            --color-text: #2d3436;
+            --color-text-light: #666;
+            --color-background: #dfe0e0;
+            --color-card: #ffffff;
+            --color-border: #e1e8ed;
+
+            /* Font sizes */
+            --text-xs: 0.75rem;
+            --text-sm: 0.875rem;
+            --text-base: 1rem;
+            --text-lg: 1.125rem;
+            --text-xl: 1.25rem;
+            --text-2xl: 1.5rem;
+            --text-3xl: 2rem;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+
+            /* Border radius */
+            --radius-sm: 0.25rem;
+            --radius-md: 1rem;
+            --radius-lg: 1rem;
+
+            /* Shadows */
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.05);
+
+            /* Transitions */
+            --transition-fast: 150ms ease-in-out;
+            --transition-normal: 250ms ease-in-out;
+
+            /* Layout */
+            --container-width: 75rem;
+            --header-height: 12rem;
+            --image-size: 10rem;
+        }
+
+        /* Base styles */
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--color-text);
+            background: var(--color-background);
+            padding: var(--space-md);
+            font-size: var(--text-base);
+        }
+
+        /* Container */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        /* Header section with accent line animation */
+        .header {
+            background: var(--color-card);
+            padding: var(--space-xl);
+            position: relative;
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            border-radius: var(--radius-md);
+        }
+
+        /* Profile image with hover effect */
+        .profile-image {
+            width: var(--image-size);
+            height: var(--image-size);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--shadow-md);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-normal);
+        }
+
+        .profile-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Header content */
+        .header-content {
+            flex: 1;
+        }
+
+        .name {
+            font-size: var(--text-3xl);
+            color: var(--color-primary);
+            margin-bottom: var(--space-sm);
+            letter-spacing: 0.05em;
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Contact info with hover effects */
+        .contact-info {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+            font-size: var(--text-sm);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            background: var(--color-background);
+            transition: var(--transition-fast);
+        }
+
+        .contact-item:hover {
+            background: var(--color-secondary);
+            color: var(--color-card);
+            transform: translateY(-0.125rem);
+        }
+
+        /* Section styling with subtle hover effect */
+        .section {
+            background: var(--color-card);
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-normal);
+            position: relative;
+            z-index: 1;
+        }
+
+        .section:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Section headers with animated underline */
+        .section-title {
+            color: var(--color-primary);
+            margin-bottom: var(--space-lg);
+            font-size: var(--text-2xl);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -0.5rem;
+            width: 0;
+            height: 0.125rem;
+            background-color: var(--color-secondary);
+            transition: var(--transition-normal);
+        }
+
+        .section:hover .section-title::after {
+            width: 100%;
+        }
+
+        /* Skills with interactive hover */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .skill-item {
+            background: var(--color-background);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius-sm);
+            font-size: var(--text-sm);
+            transition: var(--transition-fast);
+            border: 0.125rem solid transparent;
+        }
+
+        .skill-item:hover {
+            border-color: var(--color-secondary);
+            transform: translateY(-0.125rem);
+            color: var(--color-secondary);
+        }
+
+        /* Professional timeline */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: var(--space-lg);
+            padding-bottom: var(--space-md);
+            position: relative;
+            transition: var(--transition-normal);
+        }
+
+        .timeline-date {
+            flex: 0 0 8.75rem;
+            color: var(--color-secondary);
+            font-weight: 600;
+            font-size: var(--text-sm);
+            position: relative;
+        }
+
+        .timeline-date::after {
+            content: '';
+            position: absolute;
+            top: 0.5rem;
+            right: -1.5rem;
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            background-color: var(--color-secondary);
+            transition: var(--transition-normal);
+        }
+
+        .timeline-item:hover .timeline-date::after {
+            transform: scale(1.5);
+            background-color: var(--color-accent);
+        }
+
+        .timeline-content {
+            flex: 1;
+            position: relative;
+            padding-left: var(--space-lg);
+            border-left: 0.125rem solid var(--color-border);
+        }
+
+        .timeline-content h3 {
+            color: var(--color-primary);
+            margin-bottom: var(--space-xs);
+            font-size: var(--text-lg);
+        }
+
+        .timeline-content p {
+            color: var(--color-text-light);
+            font-size: var(--text-sm);
+        }
+
+        /* Grid layout */
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+        }
+
+        .grid>* {
+            flex: 1 1 21.875rem;
+        }
+
+        /* Professional summary */
+        .summary {
+            line-height: 1.8;
+            color: var(--color-text-light);
+            font-size: var(--text-base);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 48rem) {
+            :root {
+                --header-height: auto;
+                --image-size: 8rem;
+            }
+
+            .header {
+                flex-direction: column;
+                text-align: center;
+                padding: var(--space-lg);
+            }
+
+            .contact-info {
+                justify-content: center;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                gap: var(--space-xs);
+            }
+
+            .timeline-date {
+                flex: 0;
+            }
+
+            .timeline-content {
+                padding-left: var(--space-md);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="profile-image">
+                <img src="BF6BC592-7DF3-4E5B-868C-5840EDD04CE3.JPG" alt="Tessa Engelbrecht">
+            </div>
+            <div class="header-content">
+                <h1 class="name">Tessa Engelbrecht</h1>
+                <div class="contact-info">
+                    <span class="contact-item">📱 084 406 0847</span>
+                    <span class="contact-item">📧 tessa.engelbrecht@gmail.com</span>
+                </div>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title">Professional Summary</h2>
+            <div class="summary-grid">
+                <div class="summary-content">
+                    <p class="summary-text">Accomplished Computer Science graduate with a track record of academic
+                        excellence,
+                        now pursuing Honours in Computer Science. Demonstrated expertise in software development,
+                        analytical
+                        thinking, and project management through consistent academic achievements and practical
+                        experience.</p>
+                </div>
+            </div>
+        </section>
+
+
+        <div class="grid">
+            <section class="section">
+                <h2 class="section-title">Core Skills</h2>
+                <div class="skills-list">
+                    <span class="skill-item">Project Management</span>
+                    <span class="skill-item">Leadership</span>
+                    <span class="skill-item">Communication</span>
+                    <span class="skill-item">Organization</span>
+                    <span class="skill-item">Time Management</span>
+                    <span class="skill-item">Teamwork</span>
+                    <span class="skill-item">Problem Solving</span>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Programming Experience</h2>
+                <div class="skills-list">
+                    <span class="skill-item">C++</span>
+                    <span class="skill-item">Java</span>
+                    <span class="skill-item">Flutter</span>
+                    <span class="skill-item">React</span>
+                    <span class="skill-item">SQL/PostgreSQL</span>
+                    <span class="skill-item">JavaScript/TypeScript</span>
+                    <span class="skill-item">HTML/CSS</span>
+                </div>
+            </section>
+        </div>
+
+        <section class="section">
+            <h2 class="section-title">Education and Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2025 - Present</div>
+                    <div class="timeline-content">
+                        <h3>BScHons Computer Science</h3>
+                        <p>University of Pretoria</p>
+                        <ul class="achievement-list">
+                            <li>Specializing in Advanced Software Engineering and Artificial Intelligence</li>
+                            <li>Research focus Educational Software and Software Engineering</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2022 - Present</div>
+                    <div class="timeline-content">
+                        <h3>Software Engineer at BBD</h3>
+                        <p>Vacation work experience in software development, focusing on practical implementation of
+                            programming concepts and team collaboration.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2022 - 2024</div>
+                    <div class="timeline-content">
+                        <h3>BSc Computer Science</h3>
+                        <p>University of Pretoria</p>
+                        <div class="achievements-grid">
+                            <div class="achievement-card">
+                                <span class="achievement-number">75%</span>
+                                <span class="achievement-label">Weighted Average</span>
+                            </div>
+                            <div class="achievement-card">
+                                <span class="achievement-number">19</span>
+                                <span class="achievement-label">Distinctions</span>
+                            </div>
+                        </div>
+                        <div class="specialization-section">
+                            <h4>Specialized Focus Areas</h4>
+                            <div class="electives-grid">
+                                <div class="elective-item">
+                                    <h5>Artificial Intelligence</h5>
+                                </div>
+                                <div class="elective-item">
+                                    <h5>Advanced Statistics</h5>
+                                </div>
+                                <div class="elective-item">
+                                    <h5>Database Systems</h5>
+                                </div>
+                                <div class="elective-item">
+                                    <h5>Mathematics</h5>
+                                </div>
+                                <div class="elective-item">
+                                    <h5>Human-Computer Interaction</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2021</div>
+                    <div class="timeline-content">
+                        <h3>High School Centurion</h3>
+                        <p>8 Distinctions • Head Girl • IT Olympics participant • Honorary colours for Mathematics</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="section">
+            <h2 class="section-title">Achievements</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2022 - Present</div>
+                    <div class="timeline-content">
+                        <h3>Golden Key Honorary Society</h3>
+                        <p>Member of the international honor society recognizing academic excellence.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2022, 2024</div>
+                    <div class="timeline-content">
+                        <h3>Dean's Merit List</h3>
+                        <p>Recognition for outstanding academic achievement.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2019, 2020, 2025</div>
+                    <div class="timeline-content">
+                        <h3>Provincial Colors in Softball</h3>
+                        <p>Represented Gauteng-North White Sox Softball team.</p>
+                        <p>Represented Ekurhuleni Gordon Monk Tournament</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
